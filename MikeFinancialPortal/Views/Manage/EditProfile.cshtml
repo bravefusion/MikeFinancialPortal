@@ -1,0 +1,117 @@
+﻿@model MikeFinancialPortal.Models.UserProfileViewModel
+@using MikeFinancialPortal.Helpers
+@using Microsoft.AspNet.Identity
+@using MikeFinancialPortal.Models
+@{
+    var db = new ApplicationDbContext();
+    var userId = User.Identity.GetUserId();
+    var user = db.Users.Find(userId);
+}
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Edit Profile</h4>
+                    </div>
+                    <div class="content">
+                        @using (Html.BeginForm("EditProfile", "Manage", FormMethod.Post, new { @enctype = "Multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Household (disabled)</label>
+                                        <input type="text" class="form-control" disabled placeholder="household" value="Creative Code Inc.">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>DisplayName</label>
+                                        @Html.TextBoxFor(model => model.DisplayName, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" placeholder="Email">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+
+                          
+                            <div class="form-group row">
+                                <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                                <div class="col-sm-10">
+                                    @*@Html.TextBoxFor(m => m.Avatar, new { @class = "form-control", type = "file", name = "image" })*@
+                                    <input type="file" name="image" class="form-control" id="inputName" placeholder="Avatar">
+                                </div>
+                            </div>
+
+                            
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>About Me</label>
+                                        <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                            <div class="clearfix"></div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-user">
+                    <div class="image">
+                        <img src="../../Images/full-screen-image-3.jpg" alt="..." />
+                    </div>
+                    <div class="content">
+                        <div class="author">
+                            <a href="#">
+                                <img class="avatar border-gray" src="../../Images/full-screen-image-3.jpg" alt="..." />
+
+                                <h4 class="title">
+                                    @user.DisplayName<br />
+                                    <small></small>
+                                </h4>
+                            </a>
+                        </div>
+                        <p class="description text-center">
+                            "Lamborghini Mercy <br>
+                            Your chick she so thirsty <br>
+                            I'm in that two seat Lambo"
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <a href=@Url.Action("ChangePassword","Manage") class="btn btn-primary btn-block"><b>Change Password</b></a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

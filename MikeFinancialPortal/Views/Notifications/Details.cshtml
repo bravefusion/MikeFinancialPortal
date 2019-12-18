@@ -1,0 +1,74 @@
+﻿@model MikeFinancialPortal.Models.Notification
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Notification</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.HouseHolds.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.HouseHolds.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Recipient.FirstName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Recipient.FirstName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Subject)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Subject)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Body)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Body)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Created)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Created)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsRead)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsRead)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
