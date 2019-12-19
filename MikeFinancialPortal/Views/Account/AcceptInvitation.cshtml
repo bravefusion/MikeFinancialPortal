@@ -30,19 +30,16 @@
 </head>
 
 <body>
-    <div class="wrapper wrapper-full-page">       
-        <div class="full-page  section-image" data-color="blue" data-image="" style="background:url('../../Images/full-screen-image-3.jpg')no-repeat; background-size:cover">
+    <div class="wrapper wrapper-full-page full-page">  @*section-image" data-color="blue" data-image="" style="background:url('../../Images/full-screen-image-3.jpg')no-repeat; background-size:cover"*@       
+        <div @*class="full-page  section-image" data-color="blue" data-image="" style="background:url('../../Images/full-screen-image-3.jpg')no-repeat; background-size:cover"*@>
 
             
-                <h3>
-                    You accepted the invitation!
-                </h3>
-                <hr />
+                
                 <h3>
                     Click the following link to register!
                 </h3>
                 <div class="col-lg-4 col-md-6 mr-auto">
-                    <div class="card card-signup text-center">
+                    <div class="card text-center">
                         <div class="card-body ">
                             <!--form Begin-->
                             @using (Html.BeginForm())
@@ -130,12 +127,10 @@
                             }
                             <!--form End-->
                         </div>
-                        <div class="card-footer ">
-                            <a href="#pablo" class="btn btn-info btn-round">Get Started</a>
-                        </div>
+                        
                     </div>
                     <a href=@Url.Action("Register","Account")>
-                        Link!
+                        
                     </a>
                 </div>
             </div>

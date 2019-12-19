@@ -176,7 +176,7 @@ namespace MikeFinancialPortal.Controllers
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
-                {
+                {                    
                     helper.AddUserToRole(user.Id, "Guest");
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
@@ -245,6 +245,7 @@ namespace MikeFinancialPortal.Controllers
                 if (result.Succeeded)
                 {
                     InvitationExtensions.MarkAsInvalid(invitationvm.Id);
+                    
                     helper.AddUserToRole(user.Id, "Household Member");
 
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
