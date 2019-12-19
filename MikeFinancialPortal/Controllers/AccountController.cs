@@ -245,7 +245,7 @@ namespace MikeFinancialPortal.Controllers
                 if (result.Succeeded)
                 {
                     InvitationExtensions.MarkAsInvalid(invitationvm.Id);
-                    
+                    helper.RemoveUserFromRole(user.Id, "Guest");
                     helper.AddUserToRole(user.Id, "Household Member");
 
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
