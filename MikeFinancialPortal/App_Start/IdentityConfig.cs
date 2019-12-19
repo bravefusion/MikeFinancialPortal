@@ -22,8 +22,8 @@ namespace MikeFinancialPortal
         public async Task<bool> SendAsync(MailMessage message)
         {
             //Private.config set up
-            var GmailUsername = WebConfigurationManager.AppSettings["username"];
-            var GmailPassword = WebConfigurationManager.AppSettings["password"];
+            var YahooUsername = WebConfigurationManager.AppSettings["username"];
+            var YahooPassword = WebConfigurationManager.AppSettings["password"];
             var host = WebConfigurationManager.AppSettings["host"];
             int port = Convert.ToInt32(WebConfigurationManager.AppSettings["port"]);
             var from = new MailAddress(WebConfigurationManager.AppSettings["emailfrom"], "FinancialPortal");
@@ -36,7 +36,7 @@ namespace MikeFinancialPortal
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(GmailUsername, GmailPassword)
+                Credentials = new NetworkCredential(YahooUsername, YahooPassword)
             })
             {
                 try
@@ -62,8 +62,8 @@ namespace MikeFinancialPortal
         public async Task<bool> SendMailAsync(IdentityMessage message)
         {
             //Private.config set up
-            var GmailUsername = WebConfigurationManager.AppSettings["username"];
-            var GmailPassword = WebConfigurationManager.AppSettings["password"];
+            var YahooUsername = WebConfigurationManager.AppSettings["username"];
+            var YahooPassword = WebConfigurationManager.AppSettings["password"];
             var host = WebConfigurationManager.AppSettings["host"];
             int port = Convert.ToInt32(WebConfigurationManager.AppSettings["port"]);
             var from = new MailAddress(WebConfigurationManager.AppSettings["emailfrom"], "FinancialPortal");
@@ -84,7 +84,7 @@ namespace MikeFinancialPortal
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(GmailUsername, GmailPassword)
+                Credentials = new NetworkCredential(YahooUsername, YahooPassword)
             })
             {
                 try

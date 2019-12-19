@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MikeFinancialPortal.Models;
 
 namespace MikeFinancialPortal.Controllers
@@ -39,7 +40,11 @@ namespace MikeFinancialPortal.Controllers
         // GET: BudgetItems/Create
         public ActionResult Create()
         {
-            ViewBag.BudgetId = new SelectList(db.Budgets, "Id", "OwnerId");
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+            var budget = db.Budgets.Where(b => b.OwnerId == user.Id).ToList();
+
+            ViewBag.BudgetId = new SelectList(budget, "Id", "Name");
             return View();
         }
 

@@ -307,6 +307,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Manage\EditProfile.cshtml" />
     <Content Include="Views\Account\AcceptInvitation.cshtml" />
+    <Content Include="private.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
