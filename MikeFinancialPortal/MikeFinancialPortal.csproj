@@ -308,6 +308,7 @@
     <Content Include="Views\Manage\EditProfile.cshtml" />
     <Content Include="Views\Account\AcceptInvitation.cshtml" />
     <Content Include="private.config" />
+    <None Include="Properties\PublishProfiles\MikeFinancialPortal - Web Deploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

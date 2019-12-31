@@ -99,7 +99,7 @@
                                 {
                                     <li class="nav-item ">
                                         <a class="nav-link" href="@Url.Action("Create", "Invitations", new { id = user.HouseholdId })">
-                                            <span class="sidebar-mini">P</span>
+                                            <span class="sidebar-mini">I</span>
                                             <span class="sidebar-normal">Invitations</span>
                                         </a>
                                     </li>
@@ -118,26 +118,28 @@
                         </a>
                         <div class="collapse " id="formsExamples">
                             <ul class="nav">
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="@Url.Action("Create", "BankAccounts", new { id = user.HouseholdId})">
-                                        <span class="sidebar-mini">Rf</span>
-                                        <span class="sidebar-normal">Regular Forms</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href=@Url.Action("Index", "BankAccounts")>
-                                        <span class="sidebar-mini">EF</span>
-                                        <span class="sidebar-normal">Extended Forms</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href=@Url.Action("Create", "Transactions")>
-                                        <span class="sidebar-mini">EF</span>
-                                        <span class="sidebar-normal">Extended Forms</span>
-                                    </a>
-                                </li>
-
-                            </ul>
+                                @if (User.IsInRole("Household Owner"))
+                                {
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="@Url.Action("Create", "BankAccounts", new { id = user.HouseholdId })">
+                                            <span class="sidebar-mini">NB</span>
+                                            <span class="sidebar-normal">New Bank Account</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href=@Url.Action("Index", "BankAccounts")>
+                                            <span class="sidebar-mini">BA</span>
+                                            <span class="sidebar-normal">Bank Accounts</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href=@Url.Action("Create", "Transactions")>
+                                            <span class="sidebar-mini">CT</span>
+                                            <span class="sidebar-normal">New Transaction</span>
+                                        </a>
+                                    </li>
+                                }
+                                </ul>
                         </div>
                     </li>
                     <li class="nav-item">

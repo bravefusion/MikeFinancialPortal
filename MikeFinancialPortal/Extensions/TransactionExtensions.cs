@@ -18,6 +18,28 @@ namespace MikeFinancialPortal.Extensions
             UpdateBudgetItemBalance(transaction);
         }
 
+        public static void ManageNotifications(this Transaction transaction)
+        {
+
+            var bankAccount = db.BankAccounts.AsNoTracking().FirstOrDefault(b => b.Id == transaction.BankAccountId);
+            var currentBal = bankAccount.CurrentBalance;
+
+            if (currentBal < 0)
+            {
+                //SendOverDraftNotification(transaction);
+                var body = $"Your most recent transaction in the amount of {transaction.Amount} has overdrafted account {transaction.BankAccounts.Name} leaving you with a currrent balance of {transaction.BankAccounts.CurrentBalance}";
+                CreateNotification(transaction, "You over drafted your account", body);
+            }
+
+            else if (currentBal <= transaction.BankAccounts.lowLevelBalance)
+            {
+                //SendOverDraftNotification(transaction);
+
+                var body = $"Your most recent transaction in the amount of {transaction.Amount} has triggered a low balance warning account {transaction.BankAccounts.Name} leaving you with a currrent balance of {transaction.BankAccounts.CurrentBalance}";
+                CreateNotification(transaction, "You have hit your low balance", body);
+            }
+        }
+
         private static void CreateNotification(Transaction transaction, string body, string subject)
         {
             var houseId = db.Users.Find(transaction.OwnerId).HouseholdId ?? 0;

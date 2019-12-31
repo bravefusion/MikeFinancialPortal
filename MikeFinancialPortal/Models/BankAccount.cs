@@ -14,6 +14,7 @@ namespace MikeFinancialPortal.Models
         public string Name { get; set; }
         public string AccountType { get; set; }
         public float StartingBalance { get; set; }
+        public float lowLevelBalance { get; set; }
         public float CurrentBalance { get; set; }
 
         public virtual ICollection<Transaction> Transactions { get; set; }
